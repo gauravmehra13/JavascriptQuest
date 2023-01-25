@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closures</title>
+</head>
+<body>
+<h1 align="center">Closures</h1>
+
+<pre>
+    Q1
+    function counter(){
+        var counter = 0;
+        function IncreaseCounter() {
+            return counter += 1;
+        };
+        return IncreaseCounter;
+    }
+    var counter = counter();
+    alert(counter());
+    alert(counter());
+    alert(counter());
+    alert(counter());
+
+
+<b style="color: blue;">Output: 1,2,3,4 will be alerted</b>
+
+Q2
+let count = 0;
+(function () {
+  if (count === 0) {
+    let count = 1;
+    console.log(count); // What is logged?
+  }
+  console.log(count); // What is logged?
+})();
+
+Output:<b style="color: blue;">1,0</b>
+
+Q3
+for (var i = 0; i < 3; i++) {
+    setTimeout(function log() {
+      console.log(i); // What is logged?
+    }, 1000);
+}
+
+
+Output:<b style="color: blue;">3</b>
+
+Q4
+(function rectangle(l){
+  let length = l;
+  (function area(b) {
+    let breadth = b;
+    console.log(length * breadth);
+  })(3)
+})(2)
+
+
+Output:<b style="color: blue;">6</b>
+
+
+Q5
+function counter(){
+  var counter = 0;
+
+  function IncreaseCounter() {
+      return counter += 1;
+  };
+
+  return IncreaseCounter;
+}
+
+var counter = counter();
+console.log(counter());
+console.log(counter());
+console.log(counter());
+console.log(counter());
+
+
+Output:<b style="color: blue;">1,2,3,4</b>
+
+
+
+Q6
+var a = 12;
+(function () {
+  alert(a);
+})();
+
+console.log(a)
+
+Output:<p style="color: blue;">12 will be alerted</p>
+
+
+
+
+Q7    
+var a = 10;
+var x = (function () {
+  var a = 12;
+  return function () {
+    alert(a);
+  };
+})();
+x();
+
+Output:<p style="color: blue;">12 will be alerted</p>
+
+
+
+Q8
+var globalVar = "xyz";
+(function outerFunc(outerArg) {
+    var outerVar = 'a';
+    
+    (function innerFunc(innerArg) {
+    var innerVar = 'b';
+    
+    console.log(
+        "outerArg = " + outerArg + "\n" +
+        "innerArg = " + innerArg + "\n" +
+        "outerVar = " + outerVar + "\n" +
+        "innerVar = " + innerVar + "\n" +
+        "globalVar = " + globalVar);
+    
+    })(456);
+})(123);
+
+<b>Output:</b>
+<pre style="color: blue;">outerArg = 123
+innerArg = 456
+outerVar = a
+innerVar = b
+globalVar = xyz
+</pre>
+
+</pre>
+</body>
+
+
+
+<script src="closures.js"></script>
+
+</body>
+</html>
