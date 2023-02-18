@@ -165,14 +165,16 @@ const Max_out_of_three = (A,B,C) => {
 
 const findSndSmallest = (x,y,z) => {    
    
-    if ((x<y) && (x>z)|| (x>y) && (x<z))
-    return x;
-    
-    else if ((y<x) && (y>z) || (y>x) && (y<z))
-     return y;
-     
-    else if ((z<x) && (z>y) || (z>x) && (z<y))
-     return z;
+     if ((x<=y) && (x>=z)|| (x>=y) && (x<=z)){
+      console.log(x)
+    }
+
+    else if ((y<=x) && (y>=z) || (y>=x) && (y<=z)){      
+      console.log(y)
+    }
+    else{
+      console.log(z)
+     }
   };
   
 
