@@ -113,7 +113,7 @@ const findGrades = (a) => {
 
 const getValue = (a) => {
     
-    if(a=='p' || a=='p'){
+    if(a=='p' || a=='P'){
       return "PrepBytes";
     }
     
