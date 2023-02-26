@@ -61,8 +61,4 @@ function two() {
 let branch = new one();
 console.log(branch);
 
-let name = function(Obj){
-    for(let i in Obj){
-        console.log(i);
-    }
-}
+
