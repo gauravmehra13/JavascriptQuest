@@ -114,11 +114,11 @@ const findGrades = (a) => {
 const getValue = (a) => {
     
     if(a=='p' || a=='P'){
-      return "PrepBytes";
+      return "Pro Coder";
     }
     
     else if (a=='z' || a=='Z'){
-      return "Zenith";
+      return "Zero Skills";
     }
     
     else if (a=='e' || a=='E'){
