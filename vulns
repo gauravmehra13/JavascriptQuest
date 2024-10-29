@@ -8,6 +8,7 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const fetch = require('node-fetch');
 
+
 // 1. SQL Injection Vulnerability
 function getUserData(userId) {
   // Vulnerable to SQL Injection due to direct string concatenation with user input
