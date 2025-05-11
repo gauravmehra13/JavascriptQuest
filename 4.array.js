@@ -247,7 +247,7 @@ function binarysort(arr, arr2) {
 
 console.log(binarysort(arr));
 
-//Q18 Remove duplicates from the array and return it in sorted order
+//Q18 Remove duplicates from the array ( with and without sets ) and return it in sorted order
 function removeDuplicates(arr) {
   let seen = new Set();
   let duplicates = [];
@@ -397,3 +397,31 @@ const gas = [1, 2, 3, 4, 5];
 const cost = [3, 4, 5, 1, 2];
 
 console.log(canCompleteCircuit(gas, cost)); // Output: 3
+
+//Q25 memoize a function
+
+function memoize(func) {
+  let cache = {};
+
+  return function (...args) {
+    let key = JSON.stringify(args);
+
+    if (key in cache) {
+      return `cached result ${cache[key]}`;
+    }
+    const result = func.apply(this, args);
+    cache[key] = result;
+    return result;
+  };
+}
+
+function add(arr) {
+  let sum = 0;
+  for (let i of arr) {
+    sum += i;
+  }
+  return sum;
+}
+
+const memoizedFunc = memoize(add);
+console.log(memoizedFunc(arr));

@@ -60,20 +60,22 @@ var Count_Vowels = (S) => {
   return count;
 };
 
-/* 
-  let s= "Acer Predator Helios"
-  let count=0;
-  s=s.toLowerCase()
-  let ch=s[i]
-  for ( let i=0; i< s.length ; i++ ){
-    if( ch == 'a' ||  ch == 'e' ||  ch == 'i' ||  ch == 'o' ||  ch == 'u' )
-    count++
-  }  
+/* const Count_Vowels = (S) => {
+  let ch;
+  let count = 0;
+  const vowels = ["a", "e", "i", "o", "u"];
+
+  for (let i = 0; i < S.length; i++) {
+    ch = S[i];
+    ch = ch.toLowerCase();
+
+    if (vowels.includes(ch)) count++;
+  }
 
   return count;
+}; */
 
-
-*/
+console.log(Count_Vowels("acer"));
 
 //Q4 Concatenate the Strings
 
@@ -100,13 +102,6 @@ for (let i = 0; i < S.length; i++) {
 if (countD > countA) return "Danish";
 else if (countA > countD) return "Aditya";
 else return "Draw";
-
-//Q7 Join Strings
-
-const joinStrings = (S, P) => {
-  let S3 = S.concat(P);
-  return S3;
-};
 
 //Q8 Plaindrome Check
 
@@ -161,37 +156,10 @@ var Replace = (S, pattern, text) => {
   return replace;
 };
 
-//Q12 Split the String
+//Q12 Split the String to array
 
 var Split_the_string = (S) => {
   return S.split(" ");
-};
-
-//Q13 Count the Vowels and Consonants
-
-var Count_Vowels = (S) => {
-  var ch;
-  var count = 0;
-  for (let i = 0; i < S.length; i++) {
-    ch = S[i];
-    ch = ch.toUpperCase();
-
-    if (ch == "A" || ch == "E" || ch == "I" || ch == "O" || ch == "U") count++;
-  }
-
-  return count;
-};
-var Count_Consonants = (S) => {
-  var vh;
-  var count = 0;
-  for (let i = 0; i < S.length; i++) {
-    ch = S[i];
-    ch = ch.toUpperCase();
-
-    if (ch != "A" && ch != "E" && ch != "I" && ch != "O" && ch != "U") count++;
-  }
-
-  return count;
 };
 
 // Better questions :
