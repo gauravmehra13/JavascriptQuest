@@ -480,3 +480,102 @@ function getCombinations(arr){
 let arr = [1,2,3];
 console.log(getPermutationsAndCombinations(arr));
 
+//27 Subarray that adds to  0 
+
+function findZeroSumSubArrays(arr,target){
+  
+  const result = [];
+  const sumMap = new Map();
+  let currentSum = 0;
+  
+  sumMap.set(0,[-1])
+  
+  for(let i=0; i<arr.length;i++){
+    currentSum += arr[i]
+    
+    const neededSum = currentSum - target;
+    
+    if(sumMap.has(neededSum)){
+      for( let startindex of sumMap.get(neededSum)){
+        result.push(arr.slice(startindex + 1, i+1))
+      }
+    }
+    
+    
+    if(!sumMap.has(neededSum)){
+      sumMap.set(currentSum,[])
+    }
+    sumMap.get(currentSum).push(i)
+  }
+ return result 
+}
+
+console.log(findZeroSumSubArrays([3, 4, -7, 1, 2, -6, 3, 1, -4],0))
+
+
+//28 Function to find subarray that results hightest possible sum and subarray that results secondhight possible sum
+
+// your code goes here
+function maxSubarraySum(arr){
+    
+    let maxsofar = arr[0];
+    let maxendinghere = arr[0];
+    let start=0, end=0, tempstart =0;
+    
+    for(let i =1; i<arr.length;i++){
+        if(arr[i] > maxendinghere + arr[i]){
+            maxendinghere = arr[i];
+            tempstart = i;
+        }
+        else{
+            maxendinghere+=arr[i];
+        }
+        
+        
+        if(maxendinghere > maxsofar){
+            maxsofar = maxendinghere;
+            start= tempstart;
+            end = i;
+        }
+        
+    }
+    
+    return{
+        maxSum : maxsofar,
+        subarray : arr.slice(start, end+1)
+    }
+    
+}
+
+
+function secondLargestSubarraySum(arr) {
+  const first = maxSubarraySum(arr);
+  let secondMax = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i; j < arr.length; j++) {
+      if (i === first.start && j === first.end) continue; // skip max subarray
+
+      const sub = arr.slice(i, j + 1);
+      const sum = sub.reduce((a, b) => a + b, 0);
+      if (sum > secondMax) {
+        secondMax = sum;
+      }
+    }
+  }
+
+  return secondMax;
+}
+
+
+const arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+const result = maxSubarraySum(arr);
+
+console.log("Max Sum:", result.maxSum);        // Output: 6
+console.log("Subarray:", result.subarray);    // Output: [4, -1, 2, 1]
+
+const second = secondLargestSubarraySum(arr);
+console.log("Second Largest Sum:", second);    // 5 (from [4, -1, 2])
+
+
+
