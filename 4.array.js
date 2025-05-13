@@ -425,3 +425,58 @@ function add(arr) {
 
 const memoizedFunc = memoize(add);
 console.log(memoizedFunc(arr));
+
+//Q26 Find the permutations and combinations of a given array
+
+function getPermutationsAndCombinations(arr) {
+  
+  function getPermutations(arr){
+  
+  let result = [];
+  
+  function permute(current,remaining){
+    if(remaining.length === 0){
+      result.push(current)
+      return ;
+    }
+    
+  for(let i = 0; i<remaining.length;i++)  {
+    const next = current.concat(remaining[i]);
+    const rest = remaining.slice(0,i).concat(remaining.slice(i+1));
+    permute(next,rest)
+  }
+    
+  }
+    
+  permute([],arr)
+  return result  
+}
+
+
+function getCombinations(arr){
+  
+  let result = []
+  
+  function combine(start,current){
+    if(current.length > 0){
+      result.push(current)
+    }
+      
+    for(let i=start; i<arr.length;i++){
+      combine(i+1 ,current.concat(arr[i]))
+    }
+  }
+  
+  combine(0,[])
+  return result
+}
+
+  return {
+    permutations: getPermutations(arr),
+    combinations: getCombinations(arr),
+  };
+}
+
+let arr = [1,2,3];
+console.log(getPermutationsAndCombinations(arr));
+
