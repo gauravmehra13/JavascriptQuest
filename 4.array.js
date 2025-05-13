@@ -549,24 +549,49 @@ function maxSubarraySum(arr){
 
 
 function secondLargestSubarraySum(arr) {
-  const first = maxSubarraySum(arr);
-  let secondMax = 0;
+    const first = maxSubarraySum(arr);
+    let secondMax = -Infinity;
+    let secondStart = -1, secondEnd = -1;
 
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i; j < arr.length; j++) {
-      if (i === first.start && j === first.end) continue; // skip max subarray
+    for (let i = 0; i < arr.length; i++) {
+        let sum = 0;
+        for (let j = i; j < arr.length; j++) {
+            sum += arr[j];
 
-      const sub = arr.slice(i, j + 1);
-      const sum = sub.reduce((a, b) => a + b, 0);
-      if (sum > secondMax) {
-        secondMax = sum;
-      }
+            if (i === first.start && j === first.end) continue;
+
+            if (sum > secondMax) {
+                secondMax = sum;
+                secondStart = i;
+                secondEnd = j;
+            }
+        }
     }
-  }
 
-  return secondMax;
+    return {
+        secondMaxSum: secondMax,
+        subarray: arr.slice(secondStart, secondEnd + 1)
+    };
 }
 
+// function secondLargestSubarraySum(arr) {
+//   const first = maxSubarraySum(arr);
+//   let secondMax = 0;
+
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i; j < arr.length; j++) {
+//       if (i === first.start && j === first.end) continue; // skip max subarray
+
+//       const sub = arr.slice(i, j + 1);
+//       const sum = sub.reduce((a, b) => a + b, 0);
+//       if (sum > secondMax) {
+//         secondMax = sum;
+//       }
+//     }
+//   }
+
+//   return secondMax;
+// }
 
 const arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 const result = maxSubarraySum(arr);
