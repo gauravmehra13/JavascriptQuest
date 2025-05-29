@@ -229,7 +229,7 @@ console.log(intersect(arr1, arr2));
 
 //Q17 Binary Sort -> sort array in increasing order
 
-function binarysort(arr, arr2) {
+function bubblesort(arr, arr2) {
   let swapped = true;
 
   do {
@@ -245,7 +245,7 @@ function binarysort(arr, arr2) {
   return arr;
 }
 
-console.log(binarysort(arr));
+console.log(bubblesort(arr));
 
 //Q18 Remove duplicates from the array ( with and without sets ) and return it in sorted order
 function removeDuplicates(arr) {
