@@ -319,6 +319,43 @@ function pairsum(arr, target) {
 
 console.log(pairsum([10, 15, 3, 7], 17));
 
+//*Enhanced - 3 sum => Triplets summing to be the target :
+
+function threeSum(arr, target) {
+  arr.sort((a, b) => a - b); // Step 1: Sort the array
+  const result = [];
+
+  for (let i = 0; i < arr.length - 2; i++) {
+    // Skip duplicates for the first element
+    if (i > 0 && arr[i] === arr[i - 1]) continue;
+
+    let left = i + 1;
+    let right = arr.length - 1;
+
+    while (left < right) {
+      const sum = arr[i] + arr[left] + arr[right];
+
+      if (sum === target) {
+        result.push([arr[i], arr[left], arr[right]]);
+
+        // Skip duplicates for left and right
+        while (arr[left] === arr[left + 1]) left++;
+        while (arr[right] === arr[right - 1]) right--;
+
+        left++;
+        right--;
+      } else if (sum < target) {
+        left++;
+      } else {
+        right--;
+      }
+    }
+  }
+
+  return result;
+}
+
+
 // Q22 To find a subarray (contiguous elements) in an unsorted array that adds up to a target sum — and support positive and negative numbers
 
 function findSubarrayWithSum(arr, target) {
