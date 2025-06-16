@@ -248,6 +248,8 @@ function bubblesort(arr, arr2) {
 console.log(bubblesort(arr));
 
 //Q18 Remove duplicates from the array ( with and without sets ) and return it in sorted order
+
+//With Sets
 function removeDuplicates(arr) {
   let seen = new Set();
   let duplicates = [];
@@ -264,6 +266,24 @@ function removeDuplicates(arr) {
   return [...sortedSeen];
 }
 console.log(removeDuplicates(arr));
+
+//Without Sets
+function removeDuplicates(arr) {
+  const seen = {};
+  const result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const value = arr[i];
+    if (!seen[value]) {
+      seen[value] = true;
+      result.push(value);
+    }
+  }
+
+  return result;
+}
+
+console.log(removeDuplicates(arr2)); 
 
 //Q19 Flatten an array
 
