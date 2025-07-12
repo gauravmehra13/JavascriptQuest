@@ -285,6 +285,28 @@ function removeDuplicates(arr) {
 
 console.log(removeDuplicates(arr2)); 
 
+//Alternate - better approach- If you want to print both the cleaned array and the duplicates ( without repeating values )
+function removeDuplicates(arr) {
+let seen = {};
+
+let result = [];
+let duplicates = [];
+
+for(let i of arr){
+  if(seen[i]){
+    if(seen[i] === 1){
+      duplicates.push(i)
+    }
+    seen[i] ++
+  }else{
+    seen[i] = 1;
+    result.push(i)
+  }
+}
+
+return {result, duplicates}
+}
+
 //Q19 Flatten an array
 
 function flatten(arr) {
