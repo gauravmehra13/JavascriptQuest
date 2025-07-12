@@ -292,7 +292,7 @@ function flatten(arr) {
   let stack = [...arr];
 
   while (stack.length) {
-    let last = arr.pop();
+    let last = stack.pop();
     if (Array.isArray(last)) {
       stack.push(...last);
     } else flattenedArr.push(last);
