@@ -652,5 +652,29 @@ const arr = [4, -1, 2, 1, -5, 4];
 console.log(subarrayFunc(arr));
 
 
+//29 move all the zeros in the array to the end of the array and move non-negative integers to the front by maintaining their order.
+
+function myfunc(arr){
+  
+  let n =arr.length;
+  let j= -1;
+  
+  for(let i=0; i<n; i++){
+    if(arr[i] === 0){
+      j = i;
+      break;
+    }
+  }
+  
+  for(let i=j+1; i<n; i++){
+    if(arr[i] !==0){
+      [arr[j],arr[i]] = [arr[i],arr[j]]
+      j++
+    }
+  }
+  return  arr
+}
+
+
 
 
