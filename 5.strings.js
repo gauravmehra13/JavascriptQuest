@@ -398,3 +398,31 @@ function convertZigzag(s, numRows) {
 }
 
 console.log(convertZigzag("PAYPALISHIRING", 3));
+
+function validParanthesis(s) {
+    const stack = [];
+    const map = new Map();
+    
+    // Mapping closing brackets to opening ones
+    map.set(')', '(');
+    map.set('}', '{');
+    map.set(']', '[');
+
+    for (let c of s) {
+        if (c === '(' || c === '{' || c === '[') {
+            // Push opening brackets to stack
+            stack.push(c);
+        } else if (map.has(c)) {
+            // On encountering closing bracket, check the top of the stack
+            if (stack.length === 0 || map.get(c) !== stack.pop()) {
+                return false;  // If stack is empty or mismatch occurs, return false
+            }
+        }
+    }
+
+    return stack.length === 0;  // If stack is empty, all parentheses are balanced
+}
+
+
+console.log(validParanthesis(input));  // Output: true
+
