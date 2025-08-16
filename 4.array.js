@@ -348,7 +348,7 @@ function pairsum(arr, target) {
   for (let i of arr) {
     let compliment = target - i;
     if (seen.has(compliment)) {
-      pair.push(compliment, i);
+      pair.push([compliment, i]);
       found = true;
     }
     seen.add(i);
@@ -561,7 +561,7 @@ console.log(getPermutationsAndCombinations(arr));
 
 //27 Subarray that adds to  0 
 
-function findZeroSumSubArrays(arr,target){
+function targetSumSubArrays(arr,target){
   
   const result = [];
   const sumMap = new Map();
@@ -581,7 +581,7 @@ function findZeroSumSubArrays(arr,target){
     }
     
     
-    if(!sumMap.has(neededSum)){
+    if(!sumMap.has(currentSum)){
       sumMap.set(currentSum,[])
     }
     sumMap.get(currentSum).push(i)
@@ -589,7 +589,7 @@ function findZeroSumSubArrays(arr,target){
  return result 
 }
 
-console.log(findZeroSumSubArrays([3, 4, -7, 1, 2, -6, 3, 1, -4],0))
+console.log(targetSumSubArrays([3, 4, -7, 1, 2, -6, 3, 1, -4],0))
 
 
 //28 Function to find subarray that results hightest possible sum and subarray that results secondhight possible sum
@@ -692,6 +692,7 @@ function binarySearch(arr,target){
 }
 
 console.log(binarySearch([1, 2, 5, 9], 5)); // 2
+
 
 
 
