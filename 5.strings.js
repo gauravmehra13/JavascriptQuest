@@ -399,6 +399,8 @@ function convertZigzag(s, numRows) {
 
 console.log(convertZigzag("PAYPALISHIRING", 3));
 
+//Q14 For a set of paranthesis, check if they having appropriate opening and closing tags.
+
 function validParanthesis(s) {
     const stack = [];
     const map = new Map();
@@ -426,3 +428,26 @@ function validParanthesis(s) {
 
 console.log(validParanthesis(input));  // Output: true
 
+//Q15 Check the string containing roman numerals and convert it to regular integers
+
+function romanToInt  (s)  {
+  const romanMap = { I:1, V:5, X:10, L:50, C:100, D:500, M:1000 };
+  let total = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    let curr = romanMap[s[i]];
+    let next = romanMap[s[i + 1]];
+
+    if (next > curr) {
+      total += next - curr;
+      i++;
+    } else {
+      total += curr;
+    }
+  }
+
+ return total;
+}
+
+
+console.log(romanToInt("XV"))
