@@ -687,12 +687,37 @@ function binarySearch(arr,target){
     else if (arr[mid] < target) left = mid + 1;
     else right = mid - 1;
   }
-  return
-  
+  return  
 }
 
 console.log(binarySearch([1, 2, 5, 9], 5)); // 2
 
+function validParanthesis(s) {
+    const stack = [];
+    const map = new Map();
+    
+    // Mapping closing brackets to opening ones
+    map.set(')', '(');
+    map.set('}', '{');
+    map.set(']', '[');
+
+    for (let c of s) {
+        if (c === '(' || c === '{' || c === '[') {
+            // Push opening brackets to stack
+            stack.push(c);
+        } else if (map.has(c)) {
+            // On encountering closing bracket, check the top of the stack
+            if (stack.length === 0 || map.get(c) !== stack.pop()) {
+                return false;  // If stack is empty or mismatch occurs, return false
+            }
+        }
+    }
+
+    return stack.length === 0;  // If stack is empty, all parentheses are balanced
+}
+
+
+console.log(validParanthesis(input));  // Output: true
 
 
 
