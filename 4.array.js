@@ -693,8 +693,92 @@ function binarySearch(arr,target){
 
 console.log(binarySearch([1, 2, 5, 9], 5)); // 2
 
+//31  Longest Continuous Increasing Subsequence
+function myfunc(arr){
+  let currLength = 1;
+  let maxLength = 1;
+  
+  for(let i=1; i<arr.length; i++){
+    if(arr[i] > arr[i-1]){
+      currLength++;
+      if(currLength > maxLength){
+        maxLength = currLength
+      }
+    }else{
+      currLength =1
+    }
+  }
+  return maxLength
+}
 
+const input = "[1,2,3,1,4,0]"
+console.log(myfunc(input)); 
 
+//32 Third max element in the array
+  function thirdMax(nums) {
+  let first = -Infinity;
+  let second = -Infinity;
+  let third = -Infinity;
+
+  for (let num of nums) {
+    if (num === first || num === second || num === third) continue;
+
+    if (num > first) {
+      third = second;
+      second = first;
+      first = num;
+    } else if (num > second) {
+      third = second;
+      second = num;
+    } else if (num > third) {
+      third = num;
+    }
+  }
+
+  return third === -Infinity ? first : third;
+}
+
+//33 Find Peak Element( A peak element is one that is strictly greater than its neighbors.)
+function findPeakElement(nums) {
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left < right) {
+    let mid = Math.floor((left + right) / 2);
+
+    // If mid element is smaller than its right neighbor
+    // then the peak must be on the right side
+    if (nums[mid] < nums[mid + 1]) {
+      left = mid + 1;
+    } else {
+      // Otherwise, the peak is on the left side (or mid itself)
+      right = mid;
+    }
+  }
+
+  // At the end, left == right → peak index
+  return left;
+}
+
+//34 Minimum size sub array
+function minSubArrayLen(target, nums) {
+  let left = 0;
+  let sum = 0;
+  let minLen = Infinity;
+
+  for (let right = 0; right < nums.length; right++) {
+    sum += nums[right];
+
+    // While current window meets or exceeds target
+    while (sum >= target) {
+      minLen = Math.min(minLen, right - left + 1);
+      sum -= nums[left];   // shrink from left
+      left++;
+    }
+  }
+
+  return minLen === Infinity ? 0 : minLen;
+}
 
 
 
