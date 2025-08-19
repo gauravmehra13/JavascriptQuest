@@ -451,3 +451,31 @@ function romanToInt  (s)  {
 
 
 console.log(romanToInt("XV"))
+
+//Q16 Longest substring without repeating characters
+
+function lengthOfLongestSubstring(s) {
+  let left = 0;
+  let maxLen = 0;
+  let seen = new Map(); // stores char -> last index
+
+  for (let right = 0; right < s.length; right++) {
+    let char = s[right];
+
+    // If we have seen this char and it's inside current window
+    if (seen.has(char) && seen.get(char) >= left) {
+      // Move left pointer to one past the last occurrence
+      left = seen.get(char) + 1;
+    }
+
+    // Update the last index of this character
+    seen.set(char, right);
+
+    // Update max length
+    maxLen = Math.max(maxLen, right - left + 1);
+  }
+
+  return maxLen;
+}
+
+
