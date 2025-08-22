@@ -227,6 +227,24 @@ const arr1 = [1, 2, 3, 4];
 const arr2 = [3, 4, 6, 8, 2];
 console.log(intersect(arr1, arr2));
 
+
+//Q16 Find missing number from an array
+
+function findMissingNumber(arr) {
+  let n = arr.length + 1; // The total number of elements if there were no missing number
+  let totalSum = (n * (n + 1)) / 2; // Sum of all numbers from 1 to n
+  let currentSum = 0;
+
+  // Sum up all the elements in the given array
+  for (let i = 0; i < arr.length; i++) {
+    currentSum += arr[i];
+  }
+
+  // The missing number is the difference between the total sum and the sum of the array
+  return totalSum - currentSum;
+}
+
+
 //Q17 Binary Sort -> sort array in increasing order
 
 function bubblesort(arr, arr2) {
@@ -779,6 +797,7 @@ function minSubArrayLen(target, nums) {
 
   return minLen === Infinity ? 0 : minLen;
 }
+
 
 
 
